@@ -2,6 +2,7 @@ import React from "react";
 import {
   Play,
   BookOpen,
+  Download,
   Clock3,
   CalendarDays,
   ArrowUpRight,
@@ -48,6 +49,9 @@ export default function SermonsSection() {
   const getSermonUrl = (sermon) => {
     return sermon.youtubeUrl || YOUTUBE_CHANNEL_URL;
   };
+  const getAudioUrl = (sermon) => {
+  return sermon.audioUrl || "";
+};
 
   return (
     <section
@@ -330,28 +334,40 @@ export default function SermonsSection() {
 
                 {/* Featured button */}
 
-                <div className="shrink-0">
+                
+<div className="shrink-0 flex flex-col sm:flex-row gap-3">
 
-                  <a
-                    href={getSermonUrl(RECENT_SERMONS[0])}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white hover:bg-yellow-400 text-blue-950 font-black text-xs uppercase tracking-[0.12em] transition-all duration-300 hover:-translate-y-1 shadow-xl"
-                  >
+  {/* Watch on YouTube */}
+  <a
+    href={getSermonUrl(RECENT_SERMONS[0])}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white hover:bg-yellow-400 text-blue-950 font-black text-xs uppercase tracking-[0.12em] transition-all duration-300 hover:-translate-y-1 shadow-xl"
+  >
+    <span className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-950 text-white">
+      <Play className="w-4 h-4 fill-current ml-0.5" />
+    </span>
 
-                    <span className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-950 text-white">
+    Watch Message
 
-                      <Play className="w-4 h-4 fill-current ml-0.5" />
+    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+  </a>
 
-                    </span>
+  {/* Download Audio */}
+  {getAudioUrl(RECENT_SERMONS[0]) && (
+    <a
+      href={getAudioUrl(RECENT_SERMONS[0])}
+      download
+      className="group inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-black text-xs uppercase tracking-[0.12em] transition-all duration-300 hover:-translate-y-1 shadow-xl"
+    >
+      <Download className="w-4 h-4" />
+      Download Audio
+    </a>
+  )}
 
-                    Watch Message
+</div>
 
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
 
-                  </a>
-
-                </div>
 
               </div>
 
@@ -509,23 +525,54 @@ export default function SermonsSection() {
                       </div>
 
                     </div>
+                    
+{/* =================================================
+    SERMON ACTIONS
+================================================== */}
 
-                    {/* Watch button */}
+<div className="flex flex-wrap gap-2">
 
-                    <a
-                      href={getSermonUrl(sermon)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/watch inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white text-blue-950 text-[10px] font-black uppercase tracking-[0.12em] hover:bg-yellow-400 transition-colors duration-300"
-                    >
+  {/* Watch YouTube */}
+  <a
+    href={getSermonUrl(sermon)}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group/watch inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white text-blue-950 text-[10px] font-black uppercase tracking-[0.12em] hover:bg-yellow-400 transition-colors duration-300"
+  >
+    <Play className="w-4 h-4 fill-current" />
 
-                      <Play className="w-4 h-4 fill-current" />
+    Watch
 
-                      Watch
+    <ArrowUpRight className="w-3.5 h-3.5 group-hover/watch:translate-x-0.5 group-hover/watch:-translate-y-0.5 transition-transform" />
+  </a>
 
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover/watch:translate-x-0.5 group-hover/watch:-translate-y-0.5 transition-transform" />
+  {/* Listen / Download */}
+  {getAudioUrl(sermon) && (
+    <>
+      <a
+        href={getAudioUrl(sermon)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-yellow-400 text-blue-950 text-[10px] font-black uppercase tracking-[0.12em] hover:bg-yellow-300 transition-colors duration-300"
+      >
+        <Headphones className="w-4 h-4" />
+        Listen
+      </a>
 
-                    </a>
+      <a
+        href={getAudioUrl(sermon)}
+        download
+        className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white text-[10px] font-black uppercase tracking-[0.12em] hover:bg-white/10 hover:border-yellow-400/30 transition-colors duration-300"
+      >
+        <Download className="w-4 h-4 text-yellow-400" />
+        Download
+      </a>
+    </>
+  )}
+
+</div>
+
+
 
                   </div>
 

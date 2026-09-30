@@ -85,7 +85,7 @@ export const LEADERSHIP = [
     email: "adewale@okegbohobaptistchurch.org", 
     role: "Spiritual Oversight & Church Administration", 
     bio: 
-      "Serving God faithfully as a Deacon for over 15 years. Dn. Adewale oversees general administration and coordinates the church council in executing vision and spiritual development.", 
+      "Serving God faithfully as a Deacon for over 15 years. Dn. Adesope oversees general administration and coordinates the church council in executing vision and spiritual development.", 
   }, 
  
   { 
@@ -305,7 +305,7 @@ export const AUXILIARIES = [
     desc: 
       "A children's ministry designed to introduce young boys and girls to the love of God through Bible teaching, prayer, missions, Christian service, and joyful fellowship.", 
     objectives: [ 
-      "Help children develop a personal love for Godand His Word.", 
+      "Help children develop a personal love for God and His Word.", 
       "Teach children to pray and grow in Christian faith.", 
       "Introduce children to missions, generosity, and service.", 
       "Develop Christian character through age-appropriate activities.", 
@@ -375,15 +375,25 @@ export const AUXILIARIES = [
 // ============================================================ 
 // RECENT SERMONS 
 // ============================================================ 
+
 export const RECENT_SERMONS = [
   {
     id: 1,
     title: "Walking in Divine Dominion",
     preacher: "Rev'd Dr. Matthew Ade' Eniola, JP",
     scripture: "Psalm 8:6",
-    duration: "45 mins",
     date: "August 2026",
-    youtubeUrl: "https://www.youtube.com/@OKEGBOHOBAPTISTCHURCH",
+    duration: "45 mins",
+
+    // TEMPORARY TEST AUDIO
+    // Replace this with the real cloud-storage URL
+    // when the church gives us the sermon recording.
+    audioUrl:
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+
+    // Add the individual YouTube video URL here when available.
+    // If left empty, the official church channel will be opened.
+    youtubeUrl: "",
   },
 
   {
@@ -391,11 +401,18 @@ export const RECENT_SERMONS = [
     title: "The Power of the Cathedral of Mercy",
     preacher: "Rev'd Dr. Matthew Ade' Eniola, JP",
     scripture: "Hebrews 4:16",
-    duration: "40 mins",
     date: "July 2026",
-    youtubeUrl: "https://www.youtube.com/@OKEGBOHOBAPTISTCHURCH",
+    duration: "40 mins",
+
+    // No audio has been supplied yet.
+    audioUrl: "",
+
+    // Add individual YouTube video URL when available.
+    youtubeUrl: "",
   },
-]; 
+];
+
+ 
  
 // ============================================================ 
 // GALLERY IMAGES 
